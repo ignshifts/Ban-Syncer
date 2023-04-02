@@ -2,8 +2,6 @@ const input = require('input');
 
 auth();
 
-
-
 async function auth() {
     let type = await input.select('What type of auth are you using?', ['Bot', 'Account',])
     if (type == 'Bot') {
@@ -26,7 +24,6 @@ async function auth() {
 
                 if(Bans.length == 0) return console.log('No bans found, exiting...') && process.exit(1)
 
-    
                 let g2 = await input.text('What is the Server ID of the server to sync to?')
                 let Guild2 = await client.guilds.fetch(`${g2}`)
                 .catch(e => {
@@ -39,17 +36,11 @@ async function auth() {
                     .then(u => console.log(`Banned ${u.tag} (${u.id})`))
                     .catch(e => console.log(`Failed to ban ${User.tag}!, ${e}`))
                 }
-    
-                console.log('Done!')
-    
-                
+                console.log('Done!') 
             }
         })
         client.login(token).catch(err => { console.log('Invalid Token'), process.exit(1) });
-    
     } 
-    
-    
     
     else if (type == 'Account') {
 
@@ -88,14 +79,9 @@ async function auth() {
                     .then(u => console.log(`Banned ${u.tag} (${u.id})`))
                     .catch(e => console.log(`Failed to ban ${User.tag}!, ${e}`))
                 }
-    
                 console.log('Done!')
-    
-                
             }
         })
         client.login(token).catch(err => { console.log('Invalid Token'), process.exit(1) });
-
     }
-
 }
